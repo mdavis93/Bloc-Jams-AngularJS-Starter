@@ -1,5 +1,12 @@
 (function() {
   function seekBar($document) {
+
+    /**
+    * @func calculatePercent
+    * @desc Calculates the offest percentage of the X axis of the page
+    * @param {Object} seekBar
+    * @param {Object} event
+    **/
     var calculatePercent = function(seekBar, event) {
       var offsetX = event.pageX - seekBar.offset().left;
       var seekBarWidth = seekBar.width();
@@ -29,6 +36,10 @@
 
         scope.fillStyle = function() {
           return {width: percentString()};
+        };
+
+        scope.thumbStyle = function() {
+          return {left: percentString()};
         };
 
         scope.onClickSeekBar = function(event) {
