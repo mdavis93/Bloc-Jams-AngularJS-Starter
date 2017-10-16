@@ -33,11 +33,21 @@
       /**
       * @event timeupdate
       * @desc Custom event to update the current location in the song's timeline
-      * 
+      *
       **/
       currentBuzzObject.bind('timeupdate', function() {
         $rootScope.$apply(function() {
           SongPlayer.currentTime = currentBuzzObject.getTime();
+        });
+      });
+
+      /**
+      * @event volumechange
+      * @desc Custom event to update the volume level
+      **/
+      currentBuzzObject.bind('volumechange', function() {
+        $rootScope.$apply(function() {
+          SongPlayer.volume = currentBuzzObject.getVolume();
         });
       });
 
@@ -87,6 +97,12 @@
     * @type {Number}
     **/
     SongPlayer.currentTime = null;
+
+    /**
+    * @desc Current volume level percentage
+    * @type {Number}
+    **/
+    SongPlayer.voume = null;
 
     /**
     * @function SongPlayer.play
@@ -160,6 +176,17 @@
     SongPlayer.setCurrentTime = function(time) {
       if (currentBuzzObject) {
         currentBuzzObject.setTime(time);
+      }
+    };
+
+    /**
+    * @function setVolume
+    * @desc Set volume level
+    * @param {Number} volume
+    **/
+    SongPlayer.setVolume = function(volume) {
+      if (currentBuzzObject) {
+        currentBuzzObject.setVolume(volume);
       }
     };
 
