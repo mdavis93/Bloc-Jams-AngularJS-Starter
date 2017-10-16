@@ -38,6 +38,12 @@
       currentBuzzObject.bind('timeupdate', function() {
         $rootScope.$apply(function() {
           SongPlayer.currentTime = currentBuzzObject.getTime();
+
+          // Check to see if we've reached the end of the song
+          if (SongPlayer.currentTime == SongPlayer.currentSong.duration) {
+            // If so, play the next song
+            SongPlayer.next();
+          }
         });
       });
 
