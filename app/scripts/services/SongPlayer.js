@@ -111,6 +111,12 @@
     SongPlayer.voume = null;
 
     /**
+    * @desc boolean value reflecting if sound is currently muted
+    * @type {boolean}
+    **/
+    SongPlayer.isMuted = false;
+
+    /**
     * @function SongPlayer.play
     * @desc Play current or new song
     * @param {Object} song
@@ -195,6 +201,15 @@
         currentBuzzObject.setVolume(volume);
       }
     };
+
+    /**
+    * @function muteVolume
+    * @desc Mute the volume if not already muted, Unmute if currently muted
+    **/
+    SongPlayer.toggleMute = function() {
+      currentBuzzObject.toggleMute();
+      SongPlayer.isMuted = !SongPlayer.isMuted;
+    }
 
     return SongPlayer;
   }
